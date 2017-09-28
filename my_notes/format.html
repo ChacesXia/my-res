@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>医学图像格式</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+/* GitHub stylesheet for MarkdownPad (http://markdownpad.com) */
+/* Author: Nicolas Hery - http://nicolashery.com */
+/* Version: b13fe65ca28d2e568c6ed5d7f06581183df8f2ff */
+/* Source: https://github.com/nicolahery/markdownpad-github */
+
+/* RESET
+=============================================================================*/
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+/* BODY
+=============================================================================*/
+
+body {
+  font-family: Helvetica, arial, freesans, clean, sans-serif;
+  font-size: 18px;
+  line-height: 1.8;
+  color: #333;
+  background-color: #fff;
+  padding: 20px;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+body>*:first-child {
+  margin-top: 0 !important;
+}
+
+body>*:last-child {
+  margin-bottom: 0 !important;
+}
+
+/* BLOCKS
+=============================================================================*/
+
+p, blockquote, ul, ol, dl, table, pre {
+  margin: 15px 0;
+}
+
+/* HEADERS
+=============================================================================*/
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 20px 0 10px;
+  padding: 0;
+  font-weight: bold;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 tt, h1 code, h2 tt, h2 code, h3 tt, h3 code, h4 tt, h4 code, h5 tt, h5 code, h6 tt, h6 code {
+  font-size: inherit;
+}
+
+h1 {
+  font-size: 28px;
+  color: #000;
+}
+
+h2 {
+  font-size: 24px;
+  border-bottom: 1px solid #ccc;
+  color: #000;
+}
+
+h3 {
+  font-size: 18px;
+}
+
+h4 {
+  font-size: 16px;
+}
+
+h5 {
+  font-size: 14px;
+}
+
+h6 {
+  color: #777;
+  font-size: 14px;
+}
+
+body>h2:first-child, body>h1:first-child, body>h1:first-child+h2, body>h3:first-child, body>h4:first-child, body>h5:first-child, body>h6:first-child {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+h1+p, h2+p, h3+p, h4+p, h5+p, h6+p {
+  margin-top: 10px;
+}
+
+/* LINKS
+=============================================================================*/
+
+a {
+  color: #4183C4;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* LISTS
+=============================================================================*/
+
+ul, ol {
+  padding-left: 30px;
+}
+
+ul li > :first-child, 
+ol li > :first-child, 
+ul li ul:first-of-type, 
+ol li ol:first-of-type, 
+ul li ol:first-of-type, 
+ol li ul:first-of-type {
+  margin-top: 0px;
+}
+
+ul ul, ul ol, ol ol, ol ul {
+  margin-bottom: 0;
+}
+
+dl {
+  padding: 0;
+}
+
+dl dt {
+  font-size: 14px;
+  font-weight: bold;
+  font-style: italic;
+  padding: 0;
+  margin: 15px 0 5px;
+}
+
+dl dt:first-child {
+  padding: 0;
+}
+
+dl dt>:first-child {
+  margin-top: 0px;
+}
+
+dl dt>:last-child {
+  margin-bottom: 0px;
+}
+
+dl dd {
+  margin: 0 0 15px;
+  padding: 0 15px;
+}
+
+dl dd>:first-child {
+  margin-top: 0px;
+}
+
+dl dd>:last-child {
+  margin-bottom: 0px;
+}
+
+/* CODE
+=============================================================================*/
+
+pre, code, tt {
+  font-size: 14px;
+  color:white;
+  font-family: "Source Code Pro",Consolas, "Liberation Mono", Courier, monospace;
+  background-color:#23241f;
+  line-height: 1.2;
+}
+
+code, tt {
+  margin: 0 0px;
+  padding: 0px 0px;
+  white-space: nowrap;
+  border: 1px solid #eaeaea;
+  background-color: #2c2d27;
+  border-radius: 3px;
+}
+code {
+    padding-left: 3px;
+    padding-right: 3px;
+    color: #c7254e;
+    background: #f9f2f4;
+}
+pre>code {
+  color:white;
+  margin: 0;
+  padding: 0;
+  white-space: pre;
+  border: none;
+  background: transparent;
+}
+
+pre {
+  <!-- background-color: #f8f8f8; -->
+  border: 1px solid #ccc;
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 6px;
+}
+
+pre code, pre tt {
+  background-color: transparent;
+  border: none;
+}
+
+kbd {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    background-color: #DDDDDD;
+    background-image: linear-gradient(#F1F1F1, #DDDDDD);
+    background-repeat: repeat-x;
+    border-color: #DDDDDD #CCCCCC #CCCCCC #DDDDDD;
+    border-image: none;
+    border-radius: 2px 2px 2px 2px;
+    border-style: solid;
+    border-width: 1px;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    line-height: 10px;
+    padding: 1px 4px;
+}
+
+/* QUOTES
+=============================================================================*/
+
+blockquote {
+  border-left: 4px solid #887b7b;
+  padding: 0 15px;
+  color: #777;
+}
+
+blockquote>:first-child {
+  margin-top: 0px;
+}
+
+blockquote>:last-child {
+  margin-bottom: 0px;
+}
+
+/* HORIZONTAL RULES
+=============================================================================*/
+
+hr {
+  clear: both;
+  margin: 15px 0;
+  height: 0px;
+  overflow: hidden;
+  border: none;
+  background: transparent;
+  border-bottom: 4px solid #ddd;
+  padding: 0;
+}
+
+/* TABLES
+=============================================================================*/
+
+table th {
+  font-weight: bold;
+}
+
+table th, table td {
+  border: 1px solid #ccc;
+  padding: 6px 13px;
+}
+
+table tr {
+  border-top: 1px solid #ccc;
+  background-color: #fff;
+}
+
+table tr:nth-child(2n) {
+  background-color: #f8f8f8;
+}
+
+/* IMAGES
+=============================================================================*/
+
+img {
+  max-width: 100%;
+  border-radius: 6px;
+}
+</style>
+<style type="text/css">
+.highlight  { background: #ffffff; }
+.highlight .c { color: #999988; font-style: italic } /* Comment */
+.highlight .err { color: #a61717; background-color: #e3d2d2 } /* Error */
+.highlight .k { font-weight: bold } /* Keyword */
+.highlight .o { font-weight: bold } /* Operator */
+.highlight .cm { color: #999988; font-style: italic } /* Comment.Multiline */
+.highlight .cp { color: #999999; font-weight: bold } /* Comment.Preproc */
+.highlight .c1 { color: #999988; font-style: italic } /* Comment.Single */
+.highlight .cs { color: #999999; font-weight: bold; font-style: italic } /* Comment.Special */
+.highlight .gd { color: #000000; background-color: #ffdddd } /* Generic.Deleted */
+.highlight .gd .x { color: #000000; background-color: #ffaaaa } /* Generic.Deleted.Specific */
+.highlight .ge { font-style: italic } /* Generic.Emph */
+.highlight .gr { color: #aa0000 } /* Generic.Error */
+.highlight .gh { color: #999999 } /* Generic.Heading */
+.highlight .gi { color: #000000; background-color: #ddffdd } /* Generic.Inserted */
+.highlight .gi .x { color: #000000; background-color: #aaffaa } /* Generic.Inserted.Specific */
+.highlight .go { color: #888888 } /* Generic.Output */
+.highlight .gp { color: #555555 } /* Generic.Prompt */
+.highlight .gs { font-weight: bold } /* Generic.Strong */
+.highlight .gu { color: #aaaaaa } /* Generic.Subheading */
+.highlight .gt { color: #aa0000 } /* Generic.Traceback */
+.highlight .kc { font-weight: bold } /* Keyword.Constant */
+.highlight .kd { font-weight: bold } /* Keyword.Declaration */
+.highlight .kp { font-weight: bold } /* Keyword.Pseudo */
+.highlight .kr { font-weight: bold } /* Keyword.Reserved */
+.highlight .kt { color: #445588; font-weight: bold } /* Keyword.Type */
+.highlight .m { color: #009999 } /* Literal.Number */
+.highlight .s { color: #d14 } /* Literal.String */
+.highlight .na { color: #008080 } /* Name.Attribute */
+.highlight .nb { color: #0086B3 } /* Name.Builtin */
+.highlight .nc { color: #445588; font-weight: bold } /* Name.Class */
+.highlight .no { color: #008080 } /* Name.Constant */
+.highlight .ni { color: #800080 } /* Name.Entity */
+.highlight .ne { color: #990000; font-weight: bold } /* Name.Exception */
+.highlight .nf { color: #990000; font-weight: bold } /* Name.Function */
+.highlight .nn { color: #555555 } /* Name.Namespace */
+.highlight .nt { color: #000080 } /* Name.Tag */
+.highlight .nv { color: #008080 } /* Name.Variable */
+.highlight .ow { font-weight: bold } /* Operator.Word */
+.highlight .w { color: #bbbbbb } /* Text.Whitespace */
+.highlight .mf { color: #009999 } /* Literal.Number.Float */
+.highlight .mh { color: #009999 } /* Literal.Number.Hex */
+.highlight .mi { color: #009999 } /* Literal.Number.Integer */
+.highlight .mo { color: #009999 } /* Literal.Number.Oct */
+.highlight .sb { color: #d14 } /* Literal.String.Backtick */
+.highlight .sc { color: #d14 } /* Literal.String.Char */
+.highlight .sd { color: #d14 } /* Literal.String.Doc */
+.highlight .s2 { color: #d14 } /* Literal.String.Double */
+.highlight .se { color: #d14 } /* Literal.String.Escape */
+.highlight .sh { color: #d14 } /* Literal.String.Heredoc */
+.highlight .si { color: #d14 } /* Literal.String.Interpol */
+.highlight .sx { color: #d14 } /* Literal.String.Other */
+.highlight .sr { color: #009926 } /* Literal.String.Regex */
+.highlight .s1 { color: #d14 } /* Literal.String.Single */
+.highlight .ss { color: #990073 } /* Literal.String.Symbol */
+.highlight .bp { color: #999999 } /* Name.Builtin.Pseudo */
+.highlight .vc { color: #008080 } /* Name.Variable.Class */
+.highlight .vg { color: #008080 } /* Name.Variable.Global */
+.highlight .vi { color: #008080 } /* Name.Variable.Instance */
+.highlight .il { color: #009999 } /* Literal.Number.Integer.Long */
+.pl-c {
+    color: #969896;
+}
+
+.pl-c1,.pl-mdh,.pl-mm,.pl-mp,.pl-mr,.pl-s1 .pl-v,.pl-s3,.pl-sc,.pl-sv {
+    color: #0086b3;
+}
+
+.pl-e,.pl-en {
+    color: #795da3;
+}
+
+.pl-s1 .pl-s2,.pl-smi,.pl-smp,.pl-stj,.pl-vo,.pl-vpf {
+    color: #333;
+}
+
+.pl-ent {
+    color: #63a35c;
+}
+
+.pl-k,.pl-s,.pl-st {
+    color: #a71d5d;
+}
+
+.pl-pds,.pl-s1,.pl-s1 .pl-pse .pl-s2,.pl-sr,.pl-sr .pl-cce,.pl-sr .pl-sra,.pl-sr .pl-sre,.pl-src,.pl-v {
+    color: #df5000;
+}
+
+.pl-id {
+    color: #b52a1d;
+}
+
+.pl-ii {
+    background-color: #b52a1d;
+    color: #f8f8f8;
+}
+
+.pl-sr .pl-cce {
+    color: #63a35c;
+    font-weight: bold;
+}
+
+.pl-ml {
+    color: #693a17;
+}
+
+.pl-mh,.pl-mh .pl-en,.pl-ms {
+    color: #1d3e81;
+    font-weight: bold;
+}
+
+.pl-mq {
+    color: #008080;
+}
+
+.pl-mi {
+    color: #333;
+    font-style: italic;
+}
+
+.pl-mb {
+    color: #333;
+    font-weight: bold;
+}
+
+.pl-md,.pl-mdhf {
+    background-color: #ffecec;
+    color: #bd2c00;
+}
+
+.pl-mdht,.pl-mi1 {
+    background-color: #eaffea;
+    color: #55a532;
+}
+
+.pl-mdr {
+    color: #795da3;
+    font-weight: bold;
+}
+
+.pl-mo {
+    color: #1d3e81;
+}
+.task-list {
+padding-left:10px;
+margin-bottom:0;
+}
+
+.task-list li {
+    margin-left: 20px;
+}
+
+.task-list-item {
+list-style-type:none;
+padding-left:10px;
+}
+
+.task-list-item label {
+font-weight:400;
+}
+
+.task-list-item.enabled label {
+cursor:pointer;
+}
+
+.task-list-item+.task-list-item {
+margin-top:3px;
+}
+
+.task-list-item-checkbox {
+display:inline-block;
+margin-left:-20px;
+margin-right:3px;
+vertical-align:1px;
+}
+</style>
+<base href='file:\\\F:\学术\'/>
+<link rel="stylesheet" href="https://chacesxia.github.io/my-res/styles/markdown_highlight/monokai.css">
+
+‪
+<script src="https://chacesxia.github.io/my-res/markdown_highlight/highlight.pack.js"></script>
+
+
+
+<script>hljs.initHighlightingOnLoad();</script>
+</head>
+<body>
+<h1 id="-">医学图像格式</h1>
+<p>在fMRI（功能性磁共振成像，functional magnetic resonance imaging）的早期，由于大多数据都用不同研究脉冲序列采集，然后离线大量重建，而且各研究中心文件格式各不相同、大多数的分析软件也都是各研究单位内部编写运用。如果这些数据不同其他中心交流，数据的格式不影响他们的使用。因此图像格式就像巴别塔似的多式多样。</p>
+<p>随着fMRI领域的不断发展，几种标准的文件格式逐渐得到了应用，数据分析软件包的使用促进了这些文件格式在不同研究中心和实验室的广泛运用，直到近期仍有多种形式的文件格式存在。这种境况在过去的10年里随着公认的NIfTI格式的发展和广泛认可而优化。</p>
+<p>下文就fMRI资料存储的常见问题以及重要的文件格式做一概述：</p>
+<h2 id="3-1-">3.1 数据存储:</h2>
+<p>MRI（磁共振成像，Magnetic Resonance Imaging）数据的存储常采用二进制数据格式，如8位或16位。因此，磁盘上数据文件的大小就是数据图像的大小和维度，如保存维度128 ×128×96的16位图像需要25,165,824位 (3 兆字节)。为了保存图像的更多信息，我们希望保存原始数据，即元数据。元数据包含了图像的各种信息，如图像维度及数据类型等。这点很重要，因为可以获得二进制数据所不知道的信息，例如，图像是128 ×128×96维度的16位图像采集还是128 ×128×192维度的8位图像采集。在这里我们主要讨论不同的图像格式保存不同的数量及种类的元数据。</p>
+<p>MRI的结构图像通常保存为三维的资料格式。fMRI数据是一系列的图像采集，可以保存为三维格式，也可以保存为四维文件格式（第4维为时间）。通常，我们尽可能保存为四维数据格式，这样可以减少文件数量，但是有些数据分析软件包不能处理四维数据。  </p>
+<h2 id="3-2-">3.2 文件格式</h2>
+<p>神经影像的发展中出现了很多不同图像格式，常见的格式见表1：</p>
+<p>表1. 常见医学图像格式<br><img src="https://i.imgur.com/mLiGQWw.png" alt="表1. 常见医学图像格式"> </p>
+<p>在这里我们就DICOM、Analyze和NIfTI最重要的三种格式做一讨论。  </p>
+<h3 id="3-2-1-dicom-">3.2.1 DICOM格式</h3>
+<p>DICOM（Digital Imaging and Communications in Medicine）即医学数字成像和通信，是医学图像和相关信息的国际标准（ISO 12052）。现今大多MRI仪器采集后的重建数据为DICOM格式。该数据格式源于美国放射学协会（ACR）和国际电子产品制造商协会（NEMA）。DICOM不仅仅是图像的存储格式，而且是不同成像系统的不同形式数据之间转换的模式，MRI图像只是其中一种特殊形式。目前使用的DICOM遵照1993年协议，且目前主要的MRI仪器供应商都支持该格式。  </p>
+<p>通常，DICOM把每一层图像都作为一个独立的文件，这些文件用数字命名从而反映相对应的图像层数（在不同的系统有一定差异）。文件中包含文件头信息，且必须要特定的软件才能打开使用。在所有格式中，DICOM包含了大量的元数据信息在文件头中，包括仪器信息、图像采集参数以及病人信息资料。  </p>
+<p>尽管DICOM是MRI采集的标准输出格式，但是，数据分析前往往要把DICOM格式转化为其他分析格式，这主要是因为DICOM数据比较庞大。由于DICOM把每层图像都存储为独立文件，这会导致产生大量较小的数字文件，从而堵塞文件系统，降低分析速度。有很多免费工具可以把DICOM数据转换为其他存储格式。</p>
+<p>这里列出一些常用的DICOM站点：</p>
+<ol>
+<li><a href="http://www.osirix-viewer.com/resources/dicom-image-library/">http://www.osirix-viewer.com/resources/dicom-image-library/</a></li><li><a href="http://www.barre.nom.fr/medical/samples/">http://www.barre.nom.fr/medical/samples/</a></li><li><a href="https://www.dicomlibrary.com/">https://www.dicomlibrary.com/</a></li></ol>
+<h4 id="3-2-1-1-mosaic-">3.2.1.1 Mosaic数据存储格式</h4>
+<p>有些MRI的脉冲序列（特别是西门子MRI系统）把fMRI的DICOM数据存储为Mosaic格式。这种格式中，每个图像文件中包含1个mosaic文件，而实际是16层的图像。该存储格式就节约了大量的存储空间。大多情况下，仪器生产商宁愿保存为256×256，而fMRI图像的矩阵为64×64。因此，分析前必须解压缩mosaic图像，使之成为三维或四维文件从而符合分析软件需要的格式。  </p>
+<h3 id="3-2-2-analyze-">3.2.2 Analyze格式</h3>
+<p>最知名的曾使用过的MRI数据格式为Analyze格式，它是由梅奥临床医学中心使用同名的分析软件包而得名（由于费用问题而仅用于fMRI）。  </p>
+<p>Analyze格式储存的每组数据组包含2个文件，一个为数据文件，其扩展名为.img，包含二进制的图像资料；另外一个为头文件，扩展名为.hdr，包含图像的元数据。在fMRI的早期，Analyze格式最常用的格式，但现在逐渐被NIfTI格式所取代。Analyze格式主要不足就是头文件不能真正反映元数据。  </p>
+<h3 id="3-2-3-nifti-">3.2.3 NIfTI格式</h3>
+<p>NIfTI（Neuroimaging Informatics Technology Initiative）为了减少不同研究中心及数据分析软件共享数据后存在的问题，2000年美国国家精神研究所、国立神经疾病与脑卒中研究所的研究小组创建了新的数据存储格式。<br>2004年，新的数据格式的第一个版本即NIfTI-1格式发布，它是Analyze 7.5格式的延伸且增加了相当数量的元数据。NIfTI格式最重要的特征就是能反应MRI仪器的像素指数与空间位置。如果使用得当，能帮助我们准确定向，如能帮我们确定哪边代表的是左脑。  </p>
+<p>标准NIfTI图像的扩展名是.nii，包含了头文件及图像资料。由于NIfTI格式和Analyze格式的关系，因此NIfTI格式也可使用独立的图像文件（.img）和头文件（.hdr）。单独的.nii格式文件的优势就是可以用标准的压缩软件（如gzip），而且一些分析软件包（如FSL）可以直接读取和写入压缩的.nii文件（扩展名为.nii.gz）。</p>
+<blockquote>
+<p>由于某些原因，在影像研究者倾向于发展使用自己的文件格式转换程序而不是已经存在的图像转换软件。就我们观点来说，这是浪费时间，而且会增加潜在的资源错误。神经影像领域里有很多亟待解决的问题值得智慧的科研人员去研究，而把DICOM格式转换为其他标准图像格式并不属于该领域。</p>
+</blockquote>
+
+</body>
+</html>
+<!-- This document was created with MarkdownPad, the Markdown editor for Windows (http://markdownpad.com) -->
