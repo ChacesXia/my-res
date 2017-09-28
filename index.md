@@ -1,4 +1,4 @@
-## Welcome to GitHub Pages
+## Welcome to My personal website
 
 You can use the [editor on GitHub](https://github.com/ChacesXia/my-res/edit/master/index.md) to maintain and preview the content for your website in Markdown files.
 
