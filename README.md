@@ -6,3 +6,4 @@
 ### 笔记地址：
 
 - 医学图像格式：https://chacesxia.github.io/my-res/my_notes/format.html
+- 个人CV地址：[https://chacesxia.github.io/my-res/my_notes/CV.html](https://chacesxia.github.io/my-res/my_notes/CV.html)
